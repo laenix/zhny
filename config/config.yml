@@ -1,0 +1,13 @@
+
+server:
+  port:8080
+mysql:
+  driverName: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: zhny
+  userdatabase: userdata
+  devdatabase: devdata
+  username: root
+  password: ZHny1234
+  charset: utf8
