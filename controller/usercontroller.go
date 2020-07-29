@@ -15,11 +15,9 @@ import (
 
 func Register(ctx *gin.Context) {
 	DB := database.GetDB()
-	var requestUser = model.User{}
-	ctx.Bind(&requestUser)
 	// 获取参数
-	name := requestUser.Name
-	password := requestUser.Password
+	name := ctx.PostForm("name")
+	password := ctx.PostForm("password")
 
 	// 数据验证
 	if len(password) < 6 {
@@ -66,11 +64,10 @@ func Register(ctx *gin.Context) {
 
 func Login(ctx *gin.Context) {
 	DB := database.GetDB()
-	var requestUser = model.User{}
-	ctx.Bind(&requestUser)
+
 	// 获取参数
-	name := requestUser.Name
-	password := requestUser.Password
+	name := ctx.PostForm("name")
+	password := ctx.PostForm("password")
 
 	// 数据验证
 	if len(password) < 6 {
@@ -101,7 +98,7 @@ func Login(ctx *gin.Context) {
 	response.Success(ctx, gin.H{"token": token}, "登录成功")
 }
 
-func Info(ctx *gin.Context) {
+func Userinfo(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
 	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user.(model.User)}})
 }
