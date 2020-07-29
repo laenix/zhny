@@ -44,7 +44,7 @@ func Register(ctx *gin.Context) {
 		return
 	}
 
-	newUser := model.User{
+	newUser := model.Users{
 		Name:     name,
 		Password: string(hasedPassword),
 	}
@@ -74,7 +74,7 @@ func Login(ctx *gin.Context) {
 		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "密码不能少于6位")
 		return
 	}
-	var user model.User
+	var user model.Users
 	DB.Where("name = ?", name).First(&user)
 	if user.ID == 0 {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "用户不存在"})
@@ -100,11 +100,11 @@ func Login(ctx *gin.Context) {
 
 func Userinfo(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user.(model.User)}})
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user.(model.Users)}})
 }
 
 func isUserExist(db *gorm.DB, name string) bool {
-	var user model.User
+	var user model.Users
 	db.Where("name = ?", name).First(&user)
 	if user.ID != 0 {
 		return true

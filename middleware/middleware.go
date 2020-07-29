@@ -4,9 +4,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gin-gonic/gin"
 	"zhny/database"
 	"zhny/model"
+
+	"github.com/gin-gonic/gin"
 )
 
 func AuthMiddleware() gin.HandlerFunc {
@@ -32,7 +33,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		}
 		userId := Claims.UserId
 		DB := database.GetDB()
-		var user model.User
+		var user model.Users
 		DB.First(&user, userId)
 		if user.ID == 0 {
 			ctx.JSON(http.StatusUnauthorized, gin.H{
@@ -42,7 +43,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 		ctx.Set("user", user)
-
+		ctx.Set("name", user.Name)
 		ctx.Next()
 	}
 }

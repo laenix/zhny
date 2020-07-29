@@ -3,10 +3,11 @@ package database
 import (
 	"fmt"
 
+	"zhny/model"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
-	"zhny/model"
 )
 
 var DB *gorm.DB
@@ -34,8 +35,9 @@ func InitDB() *gorm.DB {
 		panic("failed to connect database,err:" + err.Error())
 	}
 	//自动建立表
-	db.AutoMigrate(&model.User{})
-	db.AutoMigrate(&model.Dev{})
+	db.SingularTable(true)
+	db.AutoMigrate(&model.Users{})
+	db.AutoMigrate(&model.Devs{})
 	DB = db
 	return db
 }
