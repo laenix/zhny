@@ -17,7 +17,7 @@ func Binddev(ctx *gin.Context) {
 	DB := database.GetDB()
 	devid := ctx.PostForm("devid")
 	devpass := ctx.PostForm("devpass")
-
+	name, _ := ctx.Get("name")
 	var dev model.Devs
 	DB.Table("devs").Where("devid = ?", devid).First(&dev)
 	//判断设备是否存在
@@ -27,10 +27,12 @@ func Binddev(ctx *gin.Context) {
 	}
 	// 判断设备密码是否正确
 	if devpass != dev.Devpass {
-		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码存在"})
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码错误"})
 		return
 	}
+	DB.Table("devs").Model(&dev).Update("belong", name)
 	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": devid, "msg": "设备绑定成功"})
+	DB.Exec("CREATE TABLE ? AS SELECT * FROM devdata where 1=2", devid)
 }
 
 func Ctrldev(ctx *gin.Context) {
@@ -93,4 +95,16 @@ func Devactive(ctx *gin.Context) {
 	}
 	DB.Table("devs").Model(&dev).Update("cmd", cmd)
 	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": cmd})
+}
+
+func Devadd(ctx *gin.Context) {
+	DB := database.GetDB()
+	devid := ctx.PostForm("devid")
+	devpass := ctx.PostForm("devpass")
+	newdev := model.Devs{
+		Devid:   devid,
+		Devpass: devpass,
+	}
+	DB.Create(&newdev)
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": newdev})
 }

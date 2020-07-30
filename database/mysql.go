@@ -38,6 +38,7 @@ func InitDB() *gorm.DB {
 	db.SingularTable(true)
 	db.AutoMigrate(&model.Users{})
 	db.AutoMigrate(&model.Devs{})
+	db.AutoMigrate(&model.Devdata{})
 	DB = db
 	return db
 }

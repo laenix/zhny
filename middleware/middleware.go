@@ -26,7 +26,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		if err != nil || !token.Valid {
 			ctx.JSON(http.StatusUnauthorized, gin.H{
-				"code": 401, "msg": "Token失效，请重新进入程序", "data": err,
+				"code": 401, "msg": "Token失效，请重新登录", "data": err,
 			})
 			ctx.Abort()
 			return
