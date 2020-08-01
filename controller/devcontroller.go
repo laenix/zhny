@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"time"
 	"zhny/database"
 	"zhny/model"
 
@@ -32,7 +33,6 @@ func Binddev(ctx *gin.Context) {
 	}
 	DB.Table("devs").Model(&dev).Update("belong", name)
 	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": devid, "msg": "设备绑定成功"})
-	DB.Exec("CREATE TABLE ? AS SELECT * FROM devdata where 1=2", devid)
 }
 
 func Ctrldev(ctx *gin.Context) {
@@ -60,7 +60,10 @@ func Devreport(ctx *gin.Context) {
 	DB := database.GetDB()
 	devid := ctx.PostForm("devid")
 	devpass := ctx.PostForm("devpass")
-	data := ctx.PostForm("data")
+	temperature := ctx.PostForm("temperature")
+	humidity := ctx.PostForm("humidity")
+	co2 := ctx.PostForm("co2")
+
 	var dev model.Devs
 	DB.Table("devs").Where("devid = ?", devid).First(&dev)
 	//判断设备是否存在
@@ -70,17 +73,24 @@ func Devreport(ctx *gin.Context) {
 	}
 	// 判断设备密码是否正确
 	if devpass != dev.Devpass {
-		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码存在"})
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码错误"})
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": data})
+	devdata := model.Devdata{
+		Devid:          devid,
+		Devtemperature: temperature,
+		Devhumidity:    humidity,
+		Devco2:         co2,
+		Time:           time.Now(),
+	}
+	DB.Table("devdata").Create(&devdata)
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": devdata})
 }
 
 func Devactive(ctx *gin.Context) {
 	DB := database.GetDB()
 	devid := ctx.PostForm("devid")
-	cmd := ctx.PostForm("cmd")
-	name, _ := ctx.Get("name")
+	devpass := ctx.PostForm("devpass")
 	var dev model.Devs
 	DB.Table("devs").Where("devid = ?", devid).First(&dev)
 	//判断设备是否存在
@@ -88,13 +98,15 @@ func Devactive(ctx *gin.Context) {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备不存在"})
 		return
 	}
-	// 判断设备是否属于该用户
-	if dev.Belong != name {
-		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "此设备不属于你"})
+	if dev.Devpass != devpass {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码错误"})
 		return
 	}
-	DB.Table("devs").Model(&dev).Update("cmd", cmd)
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": cmd})
+	if dev.Cmd == "" {
+		return
+	}
+	DB.Table("devs").Model(&dev).Update("cmd", "")
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "msg": "done"})
 }
 
 func Devadd(ctx *gin.Context) {

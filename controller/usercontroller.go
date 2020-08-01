@@ -100,7 +100,19 @@ func Login(ctx *gin.Context) {
 
 func Userinfo(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user.(model.Users)}})
+	name, _ := ctx.Get("name")
+	DB := database.GetDB()
+	var devs []model.Devs
+	DB.Table("devs").Where("belong = ?", name).Scan(&devs)
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user.(model.Users)}, "devs": devs})
+}
+
+func Console(ctx *gin.Context) {
+	name, _ := ctx.Get("name")
+	DB := database.GetDB()
+	var devs []model.Devs
+	DB.Table("devs").Where("belong = ?", name).Scan(&devs)
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "devs": devs})
 }
 
 func isUserExist(db *gorm.DB, name string) bool {

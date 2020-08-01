@@ -9,16 +9,24 @@ import (
 )
 
 func CollectRouter(r *gin.Engine) *gin.Engine {
+	//测试的
 	r.GET("/ip", func(c *gin.Context) {
 		c.String(http.StatusOK, c.ClientIP())
 	})
 	r.POST("/test", controller.Test)
+	//注册登录
 	r.POST("/register", controller.Register)
 	r.POST("/login", controller.Login)
-	r.POST("/devadd", controller.Devadd)
+	//用户信息
+	r.POST("/console", middleware.AuthMiddleware(), controller.Console)
 	r.POST("/userinfo", middleware.AuthMiddleware(), controller.Userinfo)
+	//用户绑定控制设备
 	r.POST("/binddev", middleware.AuthMiddleware(), controller.Binddev)
 	r.POST("/ctrldev", middleware.AuthMiddleware(), controller.Ctrldev)
-
+	//设备报告执行命令
+	r.POST("/devreport", controller.Devreport)
+	r.POST("/devactive", controller.Devactive)
+	//添加设备
+	r.POST("/devadd", controller.Devadd)
 	return r
 }
