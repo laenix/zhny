@@ -1,0 +1,192 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ip                       --> zhny/routers.CollectRouter.func1 (3 handlers)
+[GIN-debug] POST   /test                     --> zhny/controller.Test (3 handlers)
+[GIN-debug] POST   /register                 --> zhny/controller.Register (3 handlers)
+[GIN-debug] POST   /login                    --> zhny/controller.Login (3 handlers)
+[GIN-debug] POST   /console                  --> zhny/controller.Console (4 handlers)
+[GIN-debug] POST   /userinfo                 --> zhny/controller.Userinfo (4 handlers)
+[GIN-debug] POST   /binddev                  --> zhny/controller.Binddev (4 handlers)
+[GIN-debug] POST   /ctrldev                  --> zhny/controller.Ctrldev (4 handlers)
+[GIN-debug] POST   /devreport                --> zhny/controller.Devreport (3 handlers)
+[GIN-debug] POST   /devactive                --> zhny/controller.Devactive (3 handlers)
+[GIN-debug] POST   /devadd                   --> zhny/controller.Devadd (3 handlers)
+[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/08/01 - 17:02:30 | 200 |    1.687508ms |     112.39.90.1 | POST     "/console"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ip                       --> zhny/routers.CollectRouter.func1 (3 handlers)
+[GIN-debug] POST   /test                     --> zhny/controller.Test (3 handlers)
+[GIN-debug] POST   /register                 --> zhny/controller.Register (3 handlers)
+[GIN-debug] POST   /login                    --> zhny/controller.Login (3 handlers)
+[GIN-debug] POST   /console                  --> zhny/controller.Console (4 handlers)
+[GIN-debug] POST   /userinfo                 --> zhny/controller.Userinfo (4 handlers)
+[GIN-debug] POST   /binddev                  --> zhny/controller.Binddev (4 handlers)
+[GIN-debug] POST   /ctrldev                  --> zhny/controller.Ctrldev (4 handlers)
+[GIN-debug] POST   /readall                  --> zhny/controller.Readall (4 handlers)
+[GIN-debug] POST   /readdev                  --> zhny/controller.Readdev (4 handlers)
+[GIN-debug] POST   /devreport                --> zhny/controller.Devreport (3 handlers)
+[GIN-debug] POST   /devactive                --> zhny/controller.Devactive (3 handlers)
+[GIN-debug] POST   /devadd                   --> zhny/controller.Devadd (3 handlers)
+[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/08/01 - 17:18:42 | 404 |         802ns |    190.4.38.138 | GET      "/"
+[GIN] 2020/08/01 - 17:43:51 | 404 |       1.362µs |      14.17.3.65 | GET      "/test"
+[GIN] 2020/08/01 - 18:10:02 | 404 |       1.389µs |    47.94.52.138 | GET      "/"
+[GIN] 2020/08/01 - 18:32:51 | 200 |  219.929999ms |     112.39.90.1 | POST     "/login"
+[GIN] 2020/08/01 - 18:32:51 | 200 |    7.267645ms |     112.39.90.1 | POST     "/userinfo"
+[GIN] 2020/08/01 - 18:36:21 | 200 |   82.903877ms | 175.167.130.218 | POST     "/login"
+[GIN] 2020/08/01 - 18:36:21 | 200 |    1.674836ms | 175.167.130.218 | POST     "/userinfo"
+[GIN] 2020/08/01 - 18:59:38 | 200 |   94.462763ms |   36.43.102.191 | POST     "/login"
+[GIN] 2020/08/01 - 18:59:38 | 200 |    2.802537ms |   36.43.102.191 | POST     "/userinfo"
+[GIN] 2020/08/01 - 19:00:55 | 200 |   83.186706ms |   36.43.102.191 | POST     "/login"
+[GIN] 2020/08/01 - 19:00:55 | 200 |    4.065008ms |   36.43.102.191 | POST     "/userinfo"
+[GIN] 2020/08/01 - 19:58:30 | 404 |  681.721001ms |   193.57.65.139 | GET      "/"
+[GIN] 2020/08/01 - 20:31:10 | 404 |       1.755µs |   93.115.172.11 | GET      "/"
+[GIN] 2020/08/01 - 20:48:13 | 404 |       1.001µs |    92.38.46.205 | GET      "/"
+[GIN] 2020/08/01 - 21:02:23 | 404 |         945ns |   121.31.111.85 | GET      "/admin-scripts.asp"
+[GIN] 2020/08/01 - 21:02:23 | 404 |       1.344µs |   121.31.111.85 | GET      "/admin-scripts.asp"
+[GIN] 2020/08/01 - 21:33:14 | 404 |       1.092µs |    45.132.95.59 | GET      "/"
+[GIN] 2020/08/01 - 22:10:24 | 404 |       1.521µs | 188.232.125.186 | GET      "/"
+[GIN] 2020/08/01 - 22:12:29 | 404 |       1.415µs |  185.103.245.18 | GET      "/"
+[GIN] 2020/08/01 - 22:27:47 | 404 |       1.473µs |  119.23.138.247 | GET      "/"
+[GIN] 2020/08/01 - 23:02:12 | 404 |       1.422µs |  213.248.153.80 | GET      "/"
+[GIN] 2020/08/01 - 23:05:19 | 404 |       1.271µs | 173.212.225.214 | GET      "/"
+[GIN] 2020/08/01 - 23:35:52 | 404 |       1.415µs |   121.57.224.96 | GET      "/"
+[GIN] 2020/08/01 - 23:35:53 | 404 |        1.06µs |   121.57.224.96 | GET      "/"
+[GIN] 2020/08/01 - 23:35:56 | 404 |       1.282µs |   121.57.224.96 | GET      "/currentsetting.htm"
+[GIN] 2020/08/01 - 23:35:59 | 404 |       1.086µs |   121.57.224.96 | GET      "/scgi-bin/platform.cgi"
+[GIN] 2020/08/01 - 23:36:02 | 404 |       1.303µs |   121.57.224.96 | GET      "/cgi-bin/p2p.cgi?cmd=p2p.cgi&-action=get"
+[GIN] 2020/08/01 - 23:36:05 | 404 |       1.255µs |   121.57.224.96 | GET      "/"
+[GIN] 2020/08/01 - 23:36:08 | 404 |        1.25µs |   121.57.224.96 | GET      "/"
+[GIN] 2020/08/01 - 23:36:11 | 404 |       1.634µs |   121.57.224.96 | GET      "/cgi-bin/welcome.cgi"
+[GIN] 2020/08/01 - 23:36:14 | 404 |       1.099µs |   222.79.51.232 | GET      "/index.html"
+[GIN] 2020/08/01 - 23:36:18 | 404 |       1.031µs |   222.79.51.232 | GET      "/"
+[GIN] 2020/08/01 - 23:36:21 | 404 |       1.333µs |   222.79.51.232 | GET      "/cgi-bin/user/Config.cgi?.cab&action=get&category=Account.*"
+[GIN] 2020/08/01 - 23:36:24 | 404 |       1.225µs |   222.79.51.232 | GET      "/cgi-bin/nobody/Machine.cgi?action=get_capability"
+[GIN] 2020/08/01 - 23:36:27 | 404 |       1.154µs |   222.79.51.232 | GET      "/current_config/passwd"
+[GIN] 2020/08/01 - 23:36:30 | 404 |       1.278µs |   222.79.51.232 | GET      "/system.ini?loginuse&loginpas"
+[GIN] 2020/08/01 - 23:36:33 | 404 |       1.272µs |   222.79.51.232 | GET      "/"
+[GIN] 2020/08/01 - 23:36:37 | 404 |       1.261µs |   222.79.51.232 | GET      "/cgi-bin/webproc"
+[GIN] 2020/08/01 - 23:36:40 | 404 |       1.015µs |   222.79.51.232 | GET      "/webaccess/index.php"
+[GIN] 2020/08/01 - 23:36:43 | 404 |       1.198µs |   222.79.51.232 | GET      "/HNAP1/"
+[GIN] 2020/08/01 - 23:36:46 | 404 |         857ns |   222.79.51.232 | GET      "/common/info.cgi"
+[GIN] 2020/08/01 - 23:36:49 | 404 |       1.191µs |   222.79.51.232 | GET      "/hnap/hnap_service"
+[GIN] 2020/08/01 - 23:36:53 | 404 |       1.329µs |   221.13.12.152 | GET      "/stssys.htm"
+[GIN] 2020/08/01 - 23:36:56 | 404 |       1.154µs |   221.13.12.152 | GET      "/index.asp"
+[GIN] 2020/08/01 - 23:36:59 | 404 |       1.203µs |   221.13.12.152 | GET      "/login.htm"
+[GIN] 2020/08/01 - 23:37:02 | 404 |       1.205µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:06 | 404 |       1.281µs |   221.13.12.152 | GET      "/webpages/login.html"
+[GIN] 2020/08/01 - 23:37:09 | 404 |       1.229µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:12 | 404 |       1.009µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:15 | 404 |       1.069µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:18 | 404 |       1.042µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:19 | 404 |         998ns |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:19 | 404 |       1.169µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:19 | 404 |       1.222µs |   221.13.12.152 | GET      "/"
+[GIN] 2020/08/01 - 23:37:55 | 404 |       1.363µs |   138.97.224.86 | GET      "/"
+[GIN] 2020/08/01 - 23:38:21 | 404 |        1.33µs |  183.136.225.56 | GET      "/"
+[GIN] 2020/08/01 - 23:52:32 | 404 |       1.079µs |  223.71.167.163 | GET      "/"
+[GIN] 2020/08/02 - 00:05:03 | 200 |  204.428628ms |     112.39.90.1 | POST     "/login"
+[GIN] 2020/08/02 - 00:05:03 | 200 |    4.500461ms |     112.39.90.1 | POST     "/userinfo"
+[GIN] 2020/08/02 - 01:10:42 | 404 |       1.003µs |    80.82.70.187 | GET      "/cache/global/img/gs.gif"
+[GIN] 2020/08/02 - 01:46:08 | 404 |         997ns | 103.119.167.241 | GET      "/"
+[GIN] 2020/08/02 - 02:14:19 | 404 |       1.225µs | 184.105.247.195 | GET      "/"
+[GIN] 2020/08/02 - 02:31:11 | 404 |       1.314µs |     47.97.10.19 | GET      "/"
+[GIN] 2020/08/02 - 02:32:21 | 404 |       1.103µs |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:32:21 | 404 |       1.046µs |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:32:22 | 404 |         983ns |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:32:22 | 404 |       1.192µs |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:32:23 | 404 |       1.185µs |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:32:23 | 404 |       1.178µs |   143.92.32.106 | CONNECT  ""
+[GIN] 2020/08/02 - 02:34:09 | 404 |       1.058µs |  171.36.130.143 | HEAD     "/"
+[GIN] 2020/08/02 - 04:24:21 | 404 |       1.463µs |    47.95.28.143 | GET      "/"
+[GIN] 2020/08/02 - 04:45:17 | 404 |         978ns |     84.241.31.8 | GET      "/"
+[GIN] 2020/08/02 - 05:03:13 | 404 |       1.097µs |    51.174.51.83 | GET      "/"
+[GIN] 2020/08/02 - 06:35:26 | 404 |       1.275µs |  109.94.119.177 | GET      "/"
+[GIN] 2020/08/02 - 06:36:49 | 404 |       1.522µs |   111.30.33.149 | GET      "/"
+[GIN] 2020/08/02 - 06:42:06 | 200 |   82.613232ms |     112.39.90.1 | POST     "/login"
+[GIN] 2020/08/02 - 06:42:07 | 200 |    1.670951ms |     112.39.90.1 | POST     "/userinfo"
+[GIN] 2020/08/02 - 06:57:08 | 404 |         916ns |   106.15.52.246 | GET      "/"
+[GIN] 2020/08/02 - 07:39:10 | 404 |       1.787µs |   93.174.93.139 | POST     "/boaform/admin/formLogin"
+[GIN] 2020/08/02 - 09:37:00 | 200 |  112.381316ms |     112.39.90.1 | POST     "/readall"
+[GIN] 2020/08/02 - 09:37:15 | 200 |    4.700551ms |     112.39.90.1 | POST     "/console"
+[GIN] 2020/08/02 - 09:41:45 | 404 |       2.563µs |   66.240.205.34 | GET      "/"
+[GIN] 2020/08/02 - 09:52:36 | 200 |  202.751956ms |     112.39.90.1 | POST     "/login"
+[GIN] 2020/08/02 - 09:52:36 | 200 |    7.228937ms |     112.39.90.1 | POST     "/userinfo"
+[GIN] 2020/08/02 - 10:49:47 | 404 |           2µs |    80.82.70.187 | GET      "/cache/global/img/gs.gif"
+[GIN] 2020/08/02 - 10:52:39 | 200 |   214.65389ms |    8.210.221.57 | POST     "/login"
+[GIN] 2020/08/02 - 10:52:39 | 200 |    9.788934ms |    8.210.221.57 | POST     "/userinfo"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ip                       --> zhny/routers.CollectRouter.func1 (3 handlers)
+[GIN-debug] POST   /test                     --> zhny/controller.Test (3 handlers)
+[GIN-debug] POST   /register                 --> zhny/controller.Register (3 handlers)
+[GIN-debug] POST   /login                    --> zhny/controller.Login (3 handlers)
+[GIN-debug] POST   /console                  --> zhny/controller.Console (4 handlers)
+[GIN-debug] POST   /userinfo                 --> zhny/controller.Userinfo (4 handlers)
+[GIN-debug] POST   /binddev                  --> zhny/controller.Binddev (4 handlers)
+[GIN-debug] POST   /ctrldev                  --> zhny/controller.Ctrldev (4 handlers)
+[GIN-debug] POST   /readall                  --> zhny/controller.Readall (4 handlers)
+[GIN-debug] POST   /readdev                  --> zhny/controller.Readdev (4 handlers)
+[GIN-debug] POST   /devreport                --> zhny/controller.Devreport (3 handlers)
+[GIN-debug] POST   /devactive                --> zhny/controller.Devactive (3 handlers)
+[GIN-debug] POST   /devadd                   --> zhny/controller.Devadd (3 handlers)
+[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/08/02 - 11:54:00 | 404 |         837ns |     112.39.90.1 | POST     "/api/console"
+[GIN] 2020/08/02 - 11:56:19 | 200 |   15.942392ms |     112.39.90.1 | POST     "/console"
+[GIN] 2020/08/02 - 11:57:19 | 422 |    1.379209ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 11:57:47 | 422 |    1.308465ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 11:58:13 | 200 |    1.479217ms |     112.39.90.1 | POST     "/console"
+[GIN] 2020/08/02 - 11:58:41 | 404 |       1.306µs |  183.136.225.57 | GET      "/"
+[GIN] 2020/08/02 - 12:04:53 | 422 |    1.515129ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 12:05:02 | 422 |    1.285471ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 12:05:36 | 422 |    1.216019ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 12:18:22 | 404 |       1.323µs |    47.94.52.138 | GET      "/"
+[GIN] 2020/08/02 - 12:59:00 | 422 |   85.146807ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:01:13 | 422 |   19.867607ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:03:28 | 200 |  119.957067ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:11:16 | 200 |   11.239225ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:13:40 | 200 |  138.899482ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:22:19 | 200 |    61.66106ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:32:11 | 200 |  146.849403ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:36:51 | 200 |  148.544337ms |     112.39.90.1 | POST     "/binddev"
+[GIN] 2020/08/02 - 13:39:51 | 200 |    1.706857ms |     112.39.90.1 | POST     "/console"
+[GIN] 2020/08/02 - 13:45:52 | 200 |     1.34489ms |     112.39.90.1 | POST     "/console"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ip                       --> zhny/routers.CollectRouter.func1 (3 handlers)
+[GIN-debug] POST   /test                     --> zhny/controller.Test (3 handlers)
+[GIN-debug] POST   /register                 --> zhny/controller.Register (3 handlers)
+[GIN-debug] POST   /login                    --> zhny/controller.Login (3 handlers)
+[GIN-debug] POST   /console                  --> zhny/controller.Console (4 handlers)
+[GIN-debug] POST   /userinfo                 --> zhny/controller.Userinfo (4 handlers)
+[GIN-debug] POST   /binddev                  --> zhny/controller.Binddev (4 handlers)
+[GIN-debug] POST   /ctrldev                  --> zhny/controller.Ctrldev (4 handlers)
+[GIN-debug] POST   /readall                  --> zhny/controller.Readall (4 handlers)
+[GIN-debug] POST   /readdev                  --> zhny/controller.Readdev (4 handlers)
+[GIN-debug] POST   /devreport                --> zhny/controller.Devreport (3 handlers)
+[GIN-debug] POST   /devactive                --> zhny/controller.Devactive (3 handlers)
+[GIN-debug] POST   /devadd                   --> zhny/controller.Devadd (3 handlers)
+[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/08/02 - 14:12:52 | 200 |   18.546121ms |     112.39.90.1 | POST     "/readall"
+[GIN] 2020/08/02 - 14:14:20 | 200 |    2.196062ms |     112.39.90.1 | POST     "/readdev"

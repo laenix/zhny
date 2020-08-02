@@ -23,6 +23,9 @@ func CollectRouter(r *gin.Engine) *gin.Engine {
 	//用户绑定控制设备
 	r.POST("/binddev", middleware.AuthMiddleware(), controller.Binddev)
 	r.POST("/ctrldev", middleware.AuthMiddleware(), controller.Ctrldev)
+	//读取设备信息
+	r.POST("/readall", middleware.AuthMiddleware(), controller.Readall)
+	r.POST("/readdev", middleware.AuthMiddleware(), controller.Readdev)
 	//设备报告执行命令
 	r.POST("/devreport", controller.Devreport)
 	r.POST("/devactive", controller.Devactive)

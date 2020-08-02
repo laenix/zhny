@@ -26,6 +26,10 @@ func Binddev(ctx *gin.Context) {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备不存在"})
 		return
 	}
+	if dev.Belong != "" {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备已被绑定"})
+		return
+	}
 	// 判断设备密码是否正确
 	if devpass != dev.Devpass {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备密码错误"})
@@ -103,10 +107,45 @@ func Devactive(ctx *gin.Context) {
 		return
 	}
 	if dev.Cmd == "" {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "无命令"})
 		return
 	}
 	DB.Table("devs").Model(&dev).Update("cmd", "")
 	ctx.JSON(http.StatusOK, gin.H{"code": 200, "msg": "done"})
+}
+
+func Readall(ctx *gin.Context) {
+	name, _ := ctx.Get("name")
+	DB := database.GetDB()
+	var devs []model.Devs
+	var devdatas []model.Devdata
+	DB.Table("devs").Where("belong = ?", name).Scan(&devs)
+	for _, dev := range devs {
+		var devdata model.Devdata
+		DB.Table("devdata").Where("devid = ?", dev.Devid).Find(&devdata)
+		devdatas = append(devdatas, devdata)
+	}
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "devs": devs, "devdatas": devdatas})
+}
+
+func Readdev(ctx *gin.Context) {
+	name, _ := ctx.Get("name")
+	devid := ctx.PostForm("devid")
+	DB := database.GetDB()
+	var dev model.Devs
+	DB.Table("devs").Where("devid = ?", devid).First(&dev)
+	//判断设备是否存在
+	if dev.ID == 0 {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "设备不存在"})
+		return
+	}
+	if dev.Belong != name {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"code": 422, "msg": "该设备不属于你"})
+		return
+	}
+	var datas []model.Devdata
+	DB.Table("devdata").Where("devid = ?", devid).Scan(&datas)
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "datas": datas})
 }
 
 func Devadd(ctx *gin.Context) {
