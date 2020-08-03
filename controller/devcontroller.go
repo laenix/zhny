@@ -57,7 +57,7 @@ func Ctrldev(ctx *gin.Context) {
 		return
 	}
 	DB.Table("devs").Model(&dev).Update("cmd", cmd)
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": cmd})
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": cmd, "msg": "命令发布成功"})
 }
 
 func Devreport(ctx *gin.Context) {
@@ -118,14 +118,31 @@ func Readall(ctx *gin.Context) {
 	name, _ := ctx.Get("name")
 	DB := database.GetDB()
 	var devs []model.Devs
-	var devdatas []model.Devdata
+	var devlist []string
+	var temperaturelist []string
+	var humiditylist []string
+	var co2list []string
+	var devpd []model.Dev
 	DB.Table("devs").Where("belong = ?", name).Scan(&devs)
 	for _, dev := range devs {
 		var devdata model.Devdata
 		DB.Table("devdata").Where("devid = ?", dev.Devid).Find(&devdata)
-		devdatas = append(devdatas, devdata)
+		devp := model.Dev{
+			Devid:          dev.Devid,
+			Belong:         dev.Belong,
+			Cmd:            dev.Cmd,
+			Devtemperature: devdata.Devtemperature,
+			Devhumidity:    devdata.Devhumidity,
+			Devco2:         devdata.Devco2,
+			Time:           devdata.Time,
+		}
+		devpd = append(devpd, devp)
+		devlist = append(devlist, dev.Devid)
+		temperaturelist = append(temperaturelist, devdata.Devtemperature)
+		humiditylist = append(humiditylist, devdata.Devhumidity)
+		co2list = append(co2list, devdata.Devco2)
 	}
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "devs": devs, "devdatas": devdatas})
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": devpd, "devs": devlist, "temperatures": temperaturelist, "humiditys": humiditylist, "co2s": co2list})
 }
 
 func Readdev(ctx *gin.Context) {
@@ -144,8 +161,18 @@ func Readdev(ctx *gin.Context) {
 		return
 	}
 	var datas []model.Devdata
+	var Time []time.Time
+	var Devtemperature []string
+	var Devhumidity []string
+	var Devco2 []string
 	DB.Table("devdata").Where("devid = ?", devid).Scan(&datas)
-	ctx.JSON(http.StatusOK, gin.H{"code": 200, "datas": datas})
+	for _, devdata := range datas {
+		Time = append(Time, devdata.Time)
+		Devtemperature = append(Devtemperature, devdata.Devtemperature)
+		Devhumidity = append(Devhumidity, devdata.Devhumidity)
+		Devco2 = append(Devco2, devdata.Devco2)
+	}
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "devdatas": gin.H{"Time": Time, "Devtemperature": Devtemperature, "Devhumidity": Devhumidity, "Devco2": Devco2}})
 }
 
 func Devadd(ctx *gin.Context) {
